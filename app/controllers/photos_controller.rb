@@ -22,7 +22,27 @@ class PhotosController < ApplicationController
 
     @the_photo.destroy
 
-    render({ :template => "photo_templates/baii" })
-    #redirect_to("/photos", { :notice => "Photo deleted successfully." })
+    redirect_to("/photos", { :notice => "Photo deleted successfully." })
   end
+end
+
+def create
+  the_photo = Photo.new
+  the_photo.caption = params.fetch("caption")
+  # photo.image = params.fetch("image")
+  
+  # if photo.save
+  #   redirect_to("/photos/#{photo.id}")
+  # else
+  #   render({ :template => "photos/new" })
+  # end
+
+  
+  # the_id = params.fetch("path_id")
+  
+  # @the_photo = Photo.where({ :id => the_id }).at(0)
+
+  # @the_photo.destroy
+  render({ :template => "photo_templates/baii" })
+  #redirect_to("/photos/<%=@the_photo.id%>")
 end
