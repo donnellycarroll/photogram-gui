@@ -1,16 +1,16 @@
 class PhotosController < ApplicationController
   def index
     matching_photos = Photo.all
-    @list_of_photos = matching_photos.order({ :created_at => :asc })
+    @list_of_photos = matching_photos.order({ :created_at => :desc })
     render({ :template => "photo_templates/index" })
   end
 
   def show
-    # url_username = params.fetch("path_username")
+    url_id = params.fetch("path_id")
 
-    # matching_usernames = User.where({ :username => url_username })
+    matching_photos = Photo.where({ :id => url_id })
 
-    # @the_user = matching_usernames.at(0)
+    @the_photo = matching_photos.at(0)
 
     render({ :template => "photo_templates/show" })
   end
