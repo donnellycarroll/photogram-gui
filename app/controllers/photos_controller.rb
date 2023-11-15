@@ -14,5 +14,15 @@ class PhotosController < ApplicationController
 
     render({ :template => "photo_templates/show" })
   end
-  
+
+  def destroy
+    the_id = params.fetch("path_id")
+    
+    @the_photo = Photo.where({ :id => the_id }).at(0)
+
+    @the_photo.destroy
+
+    render({ :template => "photo_templates/baii" })
+    #redirect_to("/photos", { :notice => "Photo deleted successfully." })
+  end
 end
